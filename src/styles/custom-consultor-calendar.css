@@ -1,0 +1,484 @@
+/* src/styles/custom-consultor-calendar.css */
+
+/* Importar variables de colores (ruta según tu estructura) */
+@import './variables.css';
+
+.custom-calendar-container {
+    background-color: var(--background); /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    /* Altura ajustable, puedes controlar esto desde el componente padre si es necesario */
+    /* height: 700px; */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden; /* Asegurar que el contenido no se salga */
+    width: 100%;
+    max-width: 100%;
+    font-family: 'Inter', sans-serif; /* O la fuente que uses */
+}
+
+/* --- Toolbar (Navegación y Vistas) --- */
+.calendar-toolbar {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border);
+    gap: var(--spacing-sm); /* Espacio entre grupos de botones y label */
+    /* Ajuste para escritorio: asegurar espacio entre elementos */
+    padding: var(--spacing-xs) 0; /* Padding vertical */
+}
+
+.toolbar-navigation,
+.toolbar-views {
+    display: flex;
+    gap: var(--spacing-xs); /* Espacio entre botones individuales */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan dentro del grupo */
+}
+
+.calendar-toolbar button {
+    background-color: var(--complement);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Evita que los botones se encojan demasiado */
+    flex-basis: auto; /* Permitir que el ancho se determine por el contenido */
+}
+
+.calendar-toolbar button:hover {
+    background-color: var(--secondary);
+    transform: translateY(-1px);
+}
+
+.calendar-toolbar button:active {
+    transform: translateY(0);
+}
+
+.calendar-toolbar button.active {
+    background-color: var(--primary); /* Color diferente para el botón activo */
+}
+
+.toolbar-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+    flex-grow: 1; /* Permite que el label ocupe el espacio central */
+    text-align: center;
+    /* Ajuste para escritorio: margen para separar de los botones */
+    margin: 0 var(--spacing-md); /* Espacio a izquierda y derecha */
+    min-width: 150px; /* Asegurar un ancho mínimo */
+    white-space: nowrap; /* Evitar que el texto se envuelva en escritorio */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- Cabecera de Días de la Semana --- */
+.calendar-weekdays {
+    display: grid; /* Usar grid para la cabecera */
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas de igual ancho */
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--textPrimary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.weekday-header {
+    /* Propiedades de grid item */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ocultar texto que se desborde */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos */
+    white-space: nowrap; /* Evitar que el texto se envuelva */
+}
+
+
+/* --- Cuadrícula de Días del Mes --- */
+.calendar-grid {
+    display: grid; /* Usar grid para la cuadrícula principal */
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas de igual ancho */
+    grid-auto-rows: minmax(100px, auto); /* Altura mínima de fila, crece automáticamente */
+    border-left: 1px solid var(--border); /* Borde izquierdo de la cuadrícula */
+    border-bottom: 1px solid var(--border); /* Borde inferior de la cuadrícula */
+}
+
+.calendar-week {
+    /* Las semanas no necesitan ser un contenedor flex/grid explícito aquí,
+       ya que los días son hijos directos de .calendar-grid */
+    display: contents; /* Los hijos (.calendar-day) se colocan directamente en el grid del padre */
+}
+
+.calendar-day {
+    border-top: 1px solid var(--border); /* Borde superior de la celda */
+    border-right: 1px solid var(--border); /* Borde derecho de la celda */
+    padding: 5px; /* Padding dentro de la celda */
+    position: relative; /* Para posicionar el número del día y eventos */
+    display: flex; /* Usar flexbox para apilar contenido verticalmente */
+    flex-direction: column;
+    overflow: hidden; /* Ocultar contenido que se desborde */
+    background-color: var(--background); /* Fondo de la celda */
+}
+
+/* Estilo para días de otros meses */
+.calendar-day.other-month {
+    background-color: var(--light-background); /* Fondo gris claro */
+    color: var(--textSecondary); /* Texto gris */
+}
+
+/* Estilo para el día actual */
+.calendar-day.today {
+    background-color: #e0f2f7; /* Un azul claro para el día de hoy */
+}
+
+/* Número del día */
+.day-number {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--textPrimary);
+    position: absolute; /* Posicionar el número en la esquina superior derecha */
+    top: 5px;
+    right: 5px;
+    z-index: 1; /* Asegurar que esté por encima de los eventos de fondo */
+}
+
+.calendar-day.other-month .day-number {
+     color: var(--textSecondary); /* Color del número en días de otros meses */
+}
+
+
+/* Contenedor de eventos dentro del día */
+.day-events {
+    margin-top: 1.5em; /* Espacio para el número del día */
+    flex-grow: 1; /* Permite que el área de eventos ocupe el espacio restante */
+    overflow-y: auto; /* Añadir scroll vertical si hay muchos eventos */
+    /* Ocultar la barra de scroll en algunos navegadores */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Ocultar la barra de scroll en navegadores Webkit (Chrome, Safari) */
+.day-events::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Estilo de los eventos individuales */
+.calendar-event {
+    background-color: var(--complement); /* Color por defecto del evento */
+    color: white;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin-bottom: 3px; /* Espacio entre eventos */
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    overflow: hidden; /* Ocultar texto que se desborde */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos */
+    white-space: nowrap; /* Evitar que el texto se envuelva */
+}
+
+.calendar-event:hover {
+    background-color: var(--primary); /* Cambiar color al pasar el mouse */
+}
+
+/* --- Modal de Detalles del Evento (Si lo implementas) --- */
+/* Puedes añadir los estilos para tu modal aquí si no usas un componente separado */
+/* Por ahora, el componente ConsultorDashboardPage usa un simple alert */
+
+
+/* ==== Responsividad ==== */
+
+/* Ajustes para pantallas medianas (tablets) */
+@media (max-width: 992px) {
+    .custom-calendar-container {
+        padding: var(--spacing-sm);
+    }
+    .calendar-toolbar button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .toolbar-label {
+        font-size: 1.3rem;
+        min-width: unset; /* Permitir que se ajuste mejor */
+        margin: 0 var(--spacing-sm); /* Reducir margen en tablets */
+    }
+    .calendar-weekdays {
+        font-size: 0.85rem;
+    }
+    .calendar-grid {
+         grid-auto-rows: minmax(80px, auto); /* Reducir altura mínima de fila */
+    }
+    .calendar-day {
+        padding: 4px;
+    }
+    .day-number {
+        font-size: 0.8em;
+        top: 4px;
+        right: 4px;
+    }
+    .day-events {
+        margin-top: 1.2em; /* Ajustar espacio */
+    }
+    .calendar-event {
+        font-size: 0.75rem;
+        padding: 1px 4px;
+    }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 767px) {
+    .custom-calendar-container {
+        padding: var(--spacing-sm);
+    }
+    .calendar-toolbar {
+        flex-direction: column; /* Apilar barra de herramientas */
+        align-items: stretch; /* Estirar elementos */
+        gap: var(--spacing-sm); /* Espacio entre elementos apilados */
+    }
+    .toolbar-navigation,
+    .toolbar-views {
+        justify-content: center; /* Centrar grupos de botones */
+        gap: var(--spacing-xs); /* Espacio entre botones */
+        width: 100%; /* Ocupar todo el ancho */
+    }
+    .calendar-toolbar button {
+        /* Distribuir botones en filas */
+        flex-basis: calc(33.33% - var(--spacing-xs) * 2 / 3); /* 3 botones por fila */
+        margin: 0; /* Eliminar margen si usas gap en el contenedor */
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+    .toolbar-label {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-sm);
+        width: 100%;
+        min-width: unset;
+        margin: 0; /* Eliminar margen en móvil */
+    }
+    .calendar-weekdays {
+        font-size: 0.8rem;
+        padding-bottom: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
+    }
+     .weekday-header {
+         /* Asegurar que el texto del día quepa */
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+     }
+    .calendar-grid {
+         grid-auto-rows: minmax(60px, auto); /* Reducir altura mínima de fila */
+    }
+     .calendar-day {
+        padding: 3px;
+     }
+    .day-number {
+        font-size: 0.7em;
+        top: 3px;
+        right: 3px;
+    }
+    .day-events {
+        margin-top: 1em; /* Ajustar espacio */
+    }
+    .calendar-event {
+        font-size: 0.65rem;
+        padding: 1px 3px;
+        margin-bottom: 2px;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .custom-calendar-container {
+        padding: var(--spacing-xs);
+    }
+     .calendar-toolbar button {
+         flex-basis: calc(50% - var(--spacing-xs) / 2); /* 2 botones por fila */
+         font-size: 0.75rem;
+         padding: 0.4rem 0.6rem;
+     }
+     .toolbar-label {
+         font-size: 1rem;
+         margin: 0; /* Eliminar margen en móvil */
+     }
+     .calendar-weekdays {
+         font-size: 0.7rem;
+     }
+      .calendar-grid {
+         grid-auto-rows: minmax(50px, auto); /* Reducir altura mínima de fila */
+     }
+      .calendar-day {
+        padding: 2px;
+     }
+     .day-number {
+        font-size: 0.6em;
+        top: 2px;
+        right: 2px;
+     }
+     .day-events {
+        margin-top: 0.8em; /* Ajustar espacio */
+     }
+     .calendar-event {
+        font-size: 0.6rem;
+        padding: 1px 2px;
+        margin-bottom: 1px;
+     }
+}
+
+/* --- Ajustes Adicionales para Responsividad Interna del Calendario --- */
+
+/* Asegurar que las vistas principales del calendario ocupen el 100% del ancho */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* Ocultar scroll horizontal interno si es necesario */
+}
+
+/* Ajustar el layout de las filas de días en la vista de mes */
+.rbc-month-row {
+    display: grid; /* Usar grid para las filas */
+    grid-template-columns: repeat(7, 1fr); /* 7 columnas de igual ancho */
+    width: 100%; /* Ocupar todo el ancho */
+    min-height: 80px; /* Altura mínima para las filas de mes */
+}
+
+/* Ajustar el layout de las celdas de días individuales */
+.rbc-day-bg,
+.rbc-date-cell {
+    /* flex-basis: calc(100% / 7); /* Eliminado */
+    /* max-width: calc(100% / 7); /* Eliminado */
+    /* flex-grow: 1; /* Eliminado */
+    /* Asegurar que el contenido interno de la celda se ajuste */
+    overflow: hidden;
+    /* text-overflow: ellipsis; /* Mantener ellipsis */
+    /* white-space: nowrap; /* Mantener nowrap */
+    box-sizing: border-box; /* Incluir bordes y padding en el tamaño */
+    display: flex; /* Usar flexbox para apilar contenido verticalmente */
+    flex-direction: column; /* Apilar contenido verticalmente */
+    position: relative; /* Necesario para posicionar el número del día */
+}
+
+/* Posicionar el número del día en la esquina superior derecha */
+.rbc-date-cell > a {
+    position: absolute;
+    top: 2px; /* Ajusta según sea necesario */
+    right: 2px; /* Ajusta según sea necesario */
+    font-size: 0.8em; /* Tamaño de fuente por defecto */
+    color: var(--textSecondary);
+    z-index: 1; /* Asegurar que esté por encima del fondo */
+    padding: 0; /* Eliminar padding por defecto */
+}
+
+/* Ajustar el contenido de eventos dentro de las celdas de día */
+.rbc-row-content {
+    width: 100%; /* Asegurar que el contenido ocupe el 100% del ancho de la celda */
+    flex-grow: 1; /* Permitir que el área de eventos ocupe el espacio restante */
+    overflow-y: auto; /* Añadir scroll si hay muchos eventos */
+    /* Ocultar la barra de scroll en algunos navegadores */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-top: 15px; /* Espacio para el número del día posicionado absolutamente */
+}
+
+/* Ocultar la barra de scroll en navegadores Webkit (Chrome, Safari) */
+.rbc-row-content::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Ajustar el contenedor de eventos dentro de cada día */
+.rbc-row-segment {
+     width: 100%; /* Asegurar que el segmento de evento ocupe el 100% del ancho disponible */
+     box-sizing: border-box;
+     padding: 0 2px; /* Pequeño padding horizontal */
+}
+
+/* En pantallas pequeñas, ajustar el tamaño de fuente de los números de día */
+@media (max-width: 767px) {
+    .rbc-date-cell > a {
+        font-size: 0.7em; /* Reducir tamaño de fuente */
+        top: 1px;
+        right: 1px;
+    }
+     .rbc-day-bg,
+     .rbc-date-cell {
+         min-height: 50px; /* Aumentar altura mínima en móvil */
+     }
+     .rbc-row-content {
+         padding-top: 12px; /* Ajustar padding superior */
+     }
+     /* Ajustar el tamaño de fuente de los nombres de día en móvil */
+     .rbc-header {
+         font-size: 0.7em;
+     }
+}
+
+@media (max-width: 480px) {
+     .rbc-date-cell > a {
+        font-size: 0.6em; /* Reducir aún más */
+        top: 1px;
+        right: 1px;
+    }
+     .rbc-day-bg,
+     .rbc-date-cell {
+         min-height: 40px; /* Altura mínima en pantallas muy pequeñas */
+     }
+     .rbc-row-content {
+         padding-top: 10px; /* Ajustar padding superior */
+     }
+      /* Ajustar el tamaño de fuente de los nombres de día en pantallas muy pequeñas */
+     .rbc-header {
+         font-size: 0.65em;
+     }
+}
+
+
+/* --- Ajustes Específicos para Prevenir Superposición en Escritorio --- */
+/* Asegurarnos de que los grupos de botones no se superpongan */
+.rbc-toolbar .rbc-btn-group {
+    /* En escritorio, permitir que los grupos se alineen horizontalmente */
+    flex-direction: row;
+    flex-wrap: nowrap; /* Evitar que se envuelvan en escritorio */
+    gap: 5px; /* Espacio entre botones dentro del grupo */
+}
+
+/* Asegurarnos de que el label del toolbar no se superponga con los grupos de botones */
+.rbc-toolbar .rbc-toolbar-label {
+    /* En escritorio, permitir que el label ocupe el espacio central */
+    flex-grow: 1;
+    text-align: center;
+    /* Añadir margen horizontal para separar de los grupos de botones */
+    margin: 0 15px; /* Ajusta este valor si necesitas más o menos espacio */
+    min-width: 150px; /* Mantener un ancho mínimo razonable */
+}
+
+/* Asegurarnos de que los días de la semana no se superpongan en escritorio */
+.rbc-header {
+    white-space: nowrap; /* Evitar que el texto del día de la semana se envuelva */
+    overflow: hidden; /* Ocultar si es demasiado largo */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos */
+}
+
+/* Asegurarnos de que los números de día no se superpongan con los eventos en escritorio */
+/* Ya manejado con posicionamiento absoluto y padding-top en .rbc-row-content */
+
+
+/* Asegurar que los eventos no se superpongan visualmente de forma incorrecta */
+.rbc-event {
+    z-index: auto; /* Usar el orden natural o ajustar si hay problemas de apilamiento */
+}

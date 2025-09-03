@@ -1,0 +1,371 @@
+/* src/styles/consultor-payment.css */
+
+/* Importar variables de colores */
+@import './variables.css';
+
+.consultor-payment-container {
+    padding: var(--spacing-md);
+    background-color: var(--background);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg); /* Espacio entre secciones */
+    box-sizing: border-box;
+}
+
+.consultor-payment-container h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 2px solid var(--complement); /* Separador */
+    padding-bottom: var(--spacing-sm);
+}
+
+/* --- Filtro de Mes/Año --- */
+.month-year-filter {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background-color: var(--light-background);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+}
+
+.month-year-filter label {
+    font-weight: 600;
+    color: var(--textPrimary);
+    flex-shrink: 0; /* Evita que la etiqueta se encoja */
+}
+
+.month-year-filter select {
+    flex-grow: 1; /* Permite que el selector ocupe espacio */
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    min-width: 180px; /* Ancho mínimo para el selector */
+    background-color: white;
+    color: var(--textPrimary);
+    cursor: pointer;
+}
+
+
+/* --- Resumen de Pagos --- */
+.payment-summary {
+    background-color: var(--light-background);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.payment-summary h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--secondary);
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--spacing-xs);
+}
+
+.payment-summary .summary-items {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los items se envuelvan */
+    gap: var(--spacing-md); /* Espacio entre items del resumen */
+    justify-content: space-around; /* Distribuye el espacio */
+}
+
+.payment-summary .summary-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background-color: var(--background);
+    min-width: 150px; /* Ancho mínimo */
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.payment-summary .summary-item strong {
+    font-size: 1rem;
+    color: var(--textPrimary);
+    margin-bottom: 5px;
+}
+
+.payment-summary .summary-item span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--complement); /* Color por defecto */
+}
+
+.payment-summary .summary-item.paid span {
+    color: var(--status-accepted); /* Verde para pagado */
+}
+
+.payment-summary .summary-item.pending span {
+    color: var(--primary); /* Rojo para pendiente */
+}
+
+/* --- Estilo para el botón de descarga --- */
+.download-support-button {
+    background-color: var(--complement); /* Azul */
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: var(--spacing-sm); /* Espacio arriba */
+    align-self: center; /* Centrar el botón */
+}
+
+.download-support-button:hover {
+    background-color: darken(var(--complement), 10%);
+}
+
+
+/* --- Listas de Eventos (Pagados y Pendientes) --- */
+.payment-list-section {
+     background-color: var(--light-background);
+     padding: var(--spacing-md);
+     border-radius: 8px;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+     display: flex;
+     flex-direction: column;
+     gap: var(--spacing-sm);
+}
+
+.payment-list-section h3 {
+     margin-top: 0;
+     margin-bottom: var(--spacing-sm);
+     color: var(--secondary);
+     font-size: 1.4rem;
+     border-bottom: 1px solid var(--border);
+     padding-bottom: var(--spacing-xs);
+}
+
+.payment-list-section .payment-event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs); /* Espacio entre items de la lista */
+}
+
+.payment-list-section .payment-event-item {
+    background-color: var(--background);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-left: 5px solid var(--complement); /* Borde por defecto */
+}
+
+.payment-list-section .payment-event-item.paid {
+    border-left-color: var(--status-accepted); /* Borde verde para pagados */
+}
+
+.payment-list-section .payment-event-item.pending {
+    border-left-color: var(--primary); /* Borde rojo para pendientes */
+}
+
+
+.payment-list-section .payment-event-item .event-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.payment-list-section .payment-event-item .event-details {
+    font-size: 0.95rem;
+    color: var(--textSecondary);
+    display: flex;
+    flex-wrap: wrap; /* Permite que los detalles se envuelvan */
+    gap: var(--spacing-sm); /* Espacio entre los spans de detalles */
+    align-items: center;
+}
+
+.payment-list-section .payment-event-item .event-details span {
+    flex-shrink: 0; /* Evita que los spans se encojan demasiado */
+}
+
+.payment-list-section .payment-event-item .event-details .paid-date {
+    font-weight: 600;
+    color: var(--status-accepted);
+}
+
+
+.payment-list-section .no-payments {
+    text-align: center;
+    color: var(--textSecondary);
+    font-size: 1rem;
+    padding: var(--spacing-sm);
+}
+
+
+/* --- Filtros de Pagos (Opcional) --- */
+/* Puedes añadir estilos para filtros de mes/año aquí si los implementas */
+/* .payment-filters { ... } */
+
+
+/* ==== Responsividad de la Página de Pagos ==== */
+
+@media (max-width: 767px) {
+    .consultor-payment-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    .consultor-payment-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-md);
+    }
+     .month-year-filter {
+         padding: var(--spacing-xs);
+         gap: var(--spacing-xs);
+     }
+     .month-year-filter label {
+         flex-basis: 100%; /* Etiqueta en su propia línea */
+         text-align: center;
+     }
+     .month-year-filter select {
+         min-width: unset;
+         flex-basis: 100%; /* Selector ocupa todo el ancho */
+     }
+
+    .payment-summary {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+     .payment-summary h3 {
+         font-size: 1.3rem;
+     }
+     .payment-summary .summary-items {
+         gap: var(--spacing-sm);
+         justify-content: center; /* Centrar en pantallas pequeñas */
+     }
+      .payment-summary .summary-item {
+          min-width: 120px;
+          padding: var(--spacing-xs);
+           flex-basis: calc(50% - var(--spacing-sm) / 2); /* 2 items por fila */
+      }
+       .payment-summary .summary-item:nth-child(1) { /* Ajuste para el primer item si hay un número impar */
+           flex-basis: 100%;
+       }
+      .payment-summary .summary-item strong {
+          font-size: 0.9rem;
+      }
+      .payment-summary .summary-item span {
+          font-size: 1.1rem;
+      }
+      .download-support-button {
+         font-size: 0.95rem;
+         padding: var(--spacing-sm);
+      }
+
+     .payment-list-section {
+         padding: var(--spacing-sm);
+         gap: var(--spacing-sm);
+     }
+      .payment-list-section h3 {
+          font-size: 1.2rem;
+      }
+      .payment-list-section .payment-event-item {
+          padding: var(--spacing-sm);
+      }
+       .payment-list-section .payment-event-item .event-title {
+           font-size: 1rem;
+       }
+        .payment-list-section .payment-event-item .event-details {
+            font-size: 0.9rem;
+            gap: var(--spacing-xs);
+        }
+}
+
+@media (max-width: 480px) {
+     .consultor-payment-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+     .consultor-payment-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-sm);
+    }
+     .month-year-filter {
+         padding: var(--spacing-xs);
+         gap: var(--spacing-xs);
+     }
+     .month-year-filter label {
+         font-size: 0.9rem;
+     }
+     .month-year-filter select {
+         font-size: 0.85rem;
+     }
+
+     .payment-summary {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+     .payment-summary h3 {
+         font-size: 1.1rem;
+     }
+      .payment-summary .summary-items {
+         gap: var(--spacing-xs);
+      }
+      .payment-summary .summary-item {
+          min-width: unset; /* Eliminar ancho mínimo */
+          flex-basis: calc(50% - var(--spacing-xs) / 2); /* 2 items por fila */
+          padding: var(--spacing-xs);
+      }
+       .payment-summary .summary-item:nth-child(1) { /* Ajuste para el primer item si hay un número impar */
+           flex-basis: 100%;
+       }
+      .payment-summary .summary-item strong {
+          font-size: 0.85rem;
+      }
+      .payment-summary .summary-item span {
+          font-size: 1rem;
+      }
+       .download-support-button {
+         font-size: 0.9rem;
+         padding: var(--spacing-xs);
+      }
+
+     .payment-list-section {
+         padding: var(--spacing-sm);
+         gap: var(--spacing-sm);
+     }
+      .payment-list-section h3 {
+          font-size: 1rem;
+      }
+      .payment-list-section .payment-event-item {
+          padding: var(--spacing-xs);
+      }
+       .payment-list-section .payment-event-item .event-title {
+           font-size: 0.95rem;
+       }
+        .payment-list-section .payment-event-item .event-details {
+            font-size: 0.85rem;
+            gap: var(--spacing-xs);
+        }
+}

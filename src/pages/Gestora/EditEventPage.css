@@ -1,0 +1,75 @@
+/* src/pages/Gestora/EditEventPage.css */
+
+/* Estilos básicos para el formulario de evento */
+.event-form {
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 20px auto; /* Centra el formulario y añade margen */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo ligeramente gris */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Espacio entre grupos de formulario */
+}
+
+.form-group label {
+    display: block; /* Etiquetas en su propia línea */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%; /* Ancho completo */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Bordes redondeados para inputs/selects */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+}
+
+.form-actions {
+    margin-top: 20px; /* Espacio encima de los botones */
+    text-align: right; /* Alinea los botones a la derecha */
+}
+
+.form-actions button {
+    padding: 10px 15px;
+    margin-left: 10px; /* Espacio entre botones */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+.save-button {
+    background-color: #28a745; /* Verde para guardar */
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Rojo para eliminar */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+.cancel-button {
+    background-color: #6c757d; /* Gris para cancelar */ 
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268; /* Gris más oscuro al pasar el mouse */
+}
+
+/* Puedes añadir más estilos aquí según necesites */

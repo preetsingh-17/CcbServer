@@ -1,0 +1,198 @@
+    /* src/pages/Gestora/GestoraConsultores.css */
+
+    /* Estilos para la sección principal de la lista de consultores */
+    .consultores-list-section {
+        background-color: #ffffff; /* Fondo blanco */
+        padding: 20px; /* Espaciado interno */
+        border-radius: 8px; /* Bordes redondeados */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+        margin-top: 20px; /* Espacio en la parte superior */
+    }
+
+    /* Estilos para el encabezado de la sección (título "Lista de Consultores" y botón "Nuevo Consultor") */
+    .consultores-list-section .section-header {
+        display: flex; /* Usa Flexbox para alinear los elementos en una fila */
+        justify-content: space-between; /* Coloca el máximo espacio entre el título y el botón */
+        align-items: center; /* Centra verticalmente los elementos */
+        margin-bottom: 20px; /* Espacio debajo del encabezado */
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    }
+
+    .consultores-list-section h3 {
+        color: #333; /* Color oscuro para el título */
+        margin: 0; /* Elimina márgenes por defecto */
+        font-size: 1.4em; /* Tamaño de fuente */
+    }
+
+    /* Estilos para el botón "Nuevo Consultor" */
+    .new-consultor-button {
+        padding: 8px 15px; /* Espaciado interno */
+        border: none; /* Sin borde */
+        border-radius: 5px; /* Bordes redondeados */
+        font-size: 0.9em; /* Tamaño de fuente */
+        cursor: pointer; /* Muestra cursor de mano */
+        transition: background-color 0.3s ease, opacity 0.3s ease; /* Transición suave */
+        background-color: #dc3545; /* Color de fondo rojo (similar al de la imagen) */
+        color: white; /* Color del texto blanco */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        font-weight: bold; /* Texto en negrita */
+    }
+
+    /* Efecto al pasar el ratón sobre el botón "Nuevo Consultor" */
+    .new-consultor-button:hover {
+        opacity: 0.9; /* Reduce ligeramente la opacidad */
+    }
+
+    /* ============================================================== */
+    /* Estilos para los controles de Filtro y Ordenación */
+    /* ============================================================== */
+    .filter-sort-controls {
+        display: flex; /* Usa Flexbox para alinear los controles */
+        gap: 15px; /* Espacio entre los controles */
+        margin-bottom: 20px; /* Espacio debajo de los controles */
+        flex-wrap: wrap; /* Permite que los controles se envuelvan en pantallas pequeñas */
+        align-items: center; /* Centra verticalmente los elementos */
+    }
+
+    .filter-input,
+    .sort-select {
+        padding: 8px 12px; /* Espaciado interno */
+        border: 1px solid #ccc; /* Borde gris */
+        border-radius: 4px; /* Bordes redondeados */
+        font-size: 1em; /* Tamaño de fuente */
+        box-sizing: border-box; /* Incluye padding y borde en el tamaño */
+    }
+
+    .filter-input {
+        flex-grow: 1; /* Permite que el input de búsqueda ocupe el espacio disponible */
+        max-width: 300px; /* Ancho máximo para el input de búsqueda */
+    }
+
+    .sort-select {
+        /* Ancho por defecto o específico si es necesario */
+    }
+
+    /* Media query para ajustar en pantallas pequeñas */
+    @media (max-width: 600px) {
+        .filter-sort-controls {
+            flex-direction: column; /* Apila los controles verticalmente */
+            gap: 10px; /* Reduce el espacio */
+            align-items: stretch; /* Estira los elementos para ocupar el ancho */
+        }
+
+        .filter-input,
+        .sort-select {
+            width: 100%; /* Ocupa todo el ancho disponible */
+            max-width: none; /* Elimina el ancho máximo */
+        }
+    }
+    /* ============================================================== */
+
+
+    /* Estilos para el encabezado de la lista (las etiquetas de columna: Nombre, Especialidad, etc.) */
+    .list-header {
+        display: grid; /* Usa Grid para alinear las columnas de encabezado */
+        /* Define el ancho de las columnas. ¡IMPORTANTE! Estos deben coincidir con los de .consultor-item en ConsultorItem.css */
+        grid-template-columns: 2fr 1.5fr 2fr 1fr 1.5fr; /* Ajusta estos valores según necesites */
+        gap: 10px; /* Espacio entre las columnas */
+        padding: 10px 5px; /* Espaciado vertical y horizontal */
+        border-bottom: 1px solid #eee; /* Línea separadora inferior */
+        font-weight: bold; /* Texto en negrita */
+        color: #555; /* Color del texto */
+        margin-bottom: 10px; /* Espacio debajo del encabezado */
+    }
+
+    /* Estilos para las celdas individuales dentro del encabezado de la lista */
+    .header-cell {
+        padding: 0 5px; /* Espaciado horizontal */
+        overflow: hidden; /* Oculta contenido que se desborda */
+        text-overflow: ellipsis; /* Muestra puntos suspensivos */
+        white-space: nowrap; /* Evita que el texto se divida */
+    }
+
+    /* Alineación específica para columnas si es necesario */
+    .header-cell.events-col,
+    .header-cell.actions-col {
+        text-align: center;
+    }
+
+
+    /* Estilos para el contenedor que envuelve los ConsultorItem individuales */
+    .consultores-list-container {
+        /* No necesita muchos estilos de layout aquí,
+        ya que cada ConsultorItem individual (definido en ConsultorItem.css)
+        maneja el layout de sus propias columnas usando display: grid. */
+    }
+
+    /* Estilos para el mensaje que se muestra cuando no hay consultores */
+    .no-consultores-message {
+        text-align: center; /* Centra el texto */
+        color: #777; /* Color gris */
+        padding: 20px; /* Espaciado alrededor del texto */
+        font-style: italic; /* Texto en cursiva */
+    }
+
+    /* Estilos para el botón "Ver todos los consultores" (si lo usas) */
+    .view-all-consultores-button {
+        text-align: right; /* Alinea el contenido a la derecha */
+        margin-top: 20px; /* Espacio en la parte superior */
+        font-size: 1em; /* Tamaño de fuente normal */
+    }
+
+    /* Efecto al pasar el ratón sobre el enlace "Ver todos los consultores" */
+    .view-all-consultores-button a:hover {
+        text-decoration: underline; /* Subraya el texto */
+    }
+
+
+    /* Media queries para hacer el diseño responsivo */
+
+    /* Estilos para pantallas con un ancho máximo de 768px (tablets y móviles) */
+    @media (max-width: 768px) {
+        .consultores-list-section {
+            padding: 15px; /* Reduce el padding */
+        }
+
+        .consultores-list-section .section-header {
+            flex-direction: column; /* Apila el título y el botón */
+            align-items: flex-start; /* Alinea los elementos a la izquierda */
+            gap: 10px; /* Espacio entre el título y el botón */
+        }
+
+        .list-header {
+            /* Ajusta las columnas para pantallas más pequeñas */
+            grid-template-columns: 1.5fr 1fr 1.5fr 1fr 1fr; /* Debe coincidir con ConsultorItem.css */
+            gap: 5px; /* Reduce el espacio */
+            font-size: 0.9em; /* Reduce el tamaño de fuente */
+            padding: 8px 3px; /* Ajusta el padding */
+        }
+
+        .header-cell {
+            padding: 0 3px; /* Ajusta el padding horizontal */
+        }
+    }
+
+    /* Estilos para pantallas muy pequeñas (ancho máximo de 480px, móviles pequeños) */
+    @media (max-width: 480px) {
+        .consultores-list-section {
+            padding: 10px; /* Reduce el padding */
+        }
+
+        .list-header {
+            /* Simplifica aún más las columnas */
+            grid-template-columns: 1fr 1fr 1fr; /* Debe coincidir con ConsultorItem.css */
+            gap: 5px; /* Reduce el espacio */
+            font-size: 0.8em; /* Reduce el tamaño de fuente */
+            padding: 6px 2px; /* Ajusta el padding */
+        }
+
+        .header-cell {
+            padding: 0 2px; /* Ajusta el padding horizontal */
+        }
+
+        /* Oculta las columnas de Especialidad y Eventos en pantallas muy pequeñas */
+        .header-cell.specialty-col,
+        .header-cell.events-col {
+            display: none;
+        }
+    }

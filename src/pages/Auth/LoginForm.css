@@ -1,0 +1,198 @@
+/* src/pages/Auth/LoginForm.css */
+
+/* Variables CSS para consistencia */
+:root {
+    --primary-spacing: 1.5rem;
+    --secondary-spacing: 1rem;
+    --small-spacing: 0.5rem;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+/* Prevenir scroll lateral */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Estilos base */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Puedes añadir un fondo similar al de la imagen si lo deseas */
+    /* background: linear-gradient(to bottom right, #f0f0f0, #e0e0e0); */
+    background-color: #f0f2f5; /* Un fondo gris claro para simular el ambiente */
+    padding: var(--secondary-spacing);
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+}
+
+.login-box {
+    background-color: #fff;
+    padding: var(--primary-spacing);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: calc(100% - 2rem);
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.system-title {
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    margin-bottom: var(--small-spacing);
+    /* El color para este título se aplica desde LoginForm.js usando style */
+    line-height: 1.2;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: var(--primary-spacing);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: var(--secondary-spacing);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--small-spacing);
+    font-weight: 600;
+    color: #555;
+    font-size: clamp(0.8125rem, 2vw, 0.875rem);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: calc(var(--border-radius) / 2);
+    box-sizing: border-box;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    transition: border-color var(--transition-speed) ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #273474;
+    box-shadow: 0 0 0 2px rgba(39, 52, 116, 0.1);
+}
+
+.options-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--secondary-spacing);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--secondary-spacing);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: var(--small-spacing);
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.remember-me label {
+    color: #555;
+    cursor: pointer;
+}
+
+.forgot-password {
+    text-decoration: none;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.forgot-password:hover {
+    opacity: 0.8;
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.875rem;
+    color: white;
+    border: none;
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter var(--transition-speed) ease;
+     /* El color de fondo se aplica desde LoginForm.js usando style */
+}
+
+.login-button:hover {
+    /* Un tono ligeramente más oscuro para el hover */
+    /* El color del hover también se puede ajustar aquí o en JS si usas los colores */
+    filter: brightness(90%); /* Oscurece un poco el color de fondo */
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 480px) {
+    .login-box {
+        padding: var(--secondary-spacing);
+        width: calc(100% - 1rem);
+        margin: 0.5rem;
+    }
+
+    .options-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--small-spacing);
+        width: 100%;
+    }
+
+    .forgot-password {
+        width: 100%;
+        text-align: right;
+    }
+}
+
+@media (max-width: 360px) {
+    :root {
+        --primary-spacing: 1rem;
+        --secondary-spacing: 0.75rem;
+    }
+
+    .login-box {
+        padding: var(--secondary-spacing);
+        margin: 0.25rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+        padding: 0.625rem;
+    }
+}
+
+/* Mejoras de accesibilidad para dispositivos táctiles */
+@media (hover: none) {
+    .login-button:active {
+        filter: brightness(85%);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"],
+    .remember-me input[type="checkbox"],
+    .remember-me label {
+        min-height: 44px;
+    }
+}

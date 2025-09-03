@@ -1,0 +1,26 @@
+/* src/components/RoleSelectorTabs.css */
+
+.role-tabs-container {
+    display: flex;
+    justify-content: space-around; /* Distribuye el espacio entre los botones */
+    margin-bottom: 20px; /* Espacio entre las pestañas y el formulario */
+    border-bottom: 1px solid #ccc; /* Línea base para las pestañas */
+  }
+  
+  .role-tab {
+    flex-grow: 1; /* Permite que los botones ocupen el espacio disponible */
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* Borde inferior para el indicador activo */
+  }
+  
+  /* El color del texto y del borde inferior activo se maneja con estilos en línea en el componente JS */
+  
+  .role-tab:hover {
+      color: #333; /* Color del texto al pasar el mouse, si no está activo */
+  }

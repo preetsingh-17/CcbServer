@@ -1,0 +1,198 @@
+/* src/styles/consultor-profile.css */
+
+/* Importar variables de colores */
+@import './variables.css';
+
+.consultor-profile-container {
+    padding: var(--spacing-md);
+    background-color: var(--background);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg); /* Espacio entre secciones */
+    box-sizing: border-box;
+    max-width: 800px; /* Ancho máximo para la tarjeta de perfil */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.consultor-profile-container h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 2px solid var(--complement); /* Separador */
+    padding-bottom: var(--spacing-sm);
+}
+
+.profile-card {
+    background-color: var(--light-background);
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar contenido */
+    gap: var(--spacing-lg);
+}
+
+.profile-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Circular */
+    object-fit: cover; /* Ajustar imagen */
+    border: 3px solid var(--primary); /* Borde de color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.profile-header h3 {
+    margin: var(--spacing-sm) 0 0;
+    color: var(--secondary);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.profile-header .profile-id {
+    font-size: 0.9rem;
+    color: var(--textSecondary);
+    margin-top: 5px;
+}
+
+.profile-details-section {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.profile-details-section:last-child {
+    border-bottom: none; /* No hay borde en la última sección */
+}
+
+.profile-details-section h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--complement);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.profile-details-section p {
+    margin: 0.5rem 0;
+    color: var(--textSecondary);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.profile-details-section strong {
+    color: var(--textPrimary);
+    font-weight: 600;
+}
+
+/* Opcional: Estilos para botón de edición */
+.profile-actions {
+    width: 100%;
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.edit-profile-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+    background-color: darken(var(--primary), 10%);
+}
+
+
+/* ==== Responsividad de la Página de Perfil ==== */
+
+@media (max-width: 767px) {
+    .consultor-profile-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    .consultor-profile-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-md);
+    }
+    .profile-card {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    .profile-header h3 {
+        font-size: 1.4rem;
+    }
+    .profile-header .profile-id {
+        font-size: 0.85rem;
+    }
+    .profile-details-section h4 {
+        font-size: 1.1rem;
+    }
+    .profile-details-section p {
+        font-size: 0.95rem;
+        margin: 0.4rem 0;
+    }
+    .edit-profile-button {
+        font-size: 0.95rem;
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .consultor-profile-container {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-md);
+    }
+    .consultor-profile-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    .profile-card {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-sm);
+    }
+    .profile-picture {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-header h3 {
+        font-size: 1.2rem;
+    }
+    .profile-header .profile-id {
+        font-size: 0.8rem;
+    }
+    .profile-details-section h4 {
+        font-size: 1rem;
+    }
+    .profile-details-section p {
+        font-size: 0.9rem;
+        margin: 0.3rem 0;
+    }
+    .edit-profile-button {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs);
+    }
+}

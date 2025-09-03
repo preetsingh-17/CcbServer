@@ -1,0 +1,368 @@
+        /* Definición de variables CSS para la paleta de colores */
+        :root {
+            --primary-color: #e4022c; /* Rojo */
+            --secondary-color: #273474; /* Azul oscuro */
+            --complement-color: #394a9e; /* Azul un poco más claro */
+            --text-primary: #333;
+            --text-secondary: #555;
+            --border-color: #eee;
+            --background-color: #f4f7f6;
+            --card-background: #fff; /* Blanco roto para las tarjetas */
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            
+            /* Bordes */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            
+            /* Espaciados */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+        }
+
+
+        /* Estilos base */
+        .dashboard-container {
+            padding: var(--spacing-sm);
+            background-color: var(--background-color);
+            min-height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Encabezado del Dashboard */
+        .dashboard-header {
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md) var(--spacing-sm);
+            background-color: var(--card-background);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        /* Tarjetas de resumen */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .card {
+            background-color: var(--card-background);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-color);
+            border-radius: var(--radius-sm);
+        }
+
+        .card-icon-svg {
+            width: 24px;
+            height: 24px;
+            color: var(--complement-color);
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .card h2 {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .card p {
+            margin: var(--spacing-xs) 0 0;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        /* Información del próximo evento */
+        .next-event-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+
+        .event-title {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            font-size: 0.875rem;
+        }
+
+        .event-date,
+        .event-location {
+            color: var(--text-secondary);
+        }
+
+        .event-modality {
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .event-modality.presencial {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .event-modality.virtual {
+            background-color: var(--complement-color);
+            color: white;
+        }
+
+        .event-modality.hibrida {
+            background-color: var(--warning-color);
+            color: var(--text-primary);
+        }
+
+        /* Sección de Próximos Eventos */
+        .upcoming-events-section {
+            background-color: var(--card-background);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        /* Botones */
+        .new-event-button,
+        .create-event-button {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            transition: all 0.2s ease;
+        }
+
+        .new-event-button:hover,
+        .create-event-button:hover {
+            background-color: #c00223;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .button-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Lista de Eventos */
+        .upcoming-events-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        /* Estados de carga y error */
+        .loading-state,
+        .error-message,
+        .no-upcoming-events {
+            text-align: center;
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+        }
+
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--complement-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background-color: #fff2f2;
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+        }
+
+        .no-upcoming-events {
+            background-color: var(--background-color);
+            border: 2px dashed var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .no-upcoming-events p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Ver todos los eventos */
+        .view-all-link {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .link-button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: none;
+            border: 1px solid var(--complement-color);
+            color: var(--complement-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            transition: all 0.2s ease;
+        }
+
+        .link-button:hover {
+            background-color: var(--complement-color);
+            color: white;
+        }
+
+        /* Media Queries */
+        @media (min-width: 480px) {
+            .dashboard-container {
+                padding: var(--spacing-md);
+            }
+
+            .summary-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .new-event-button {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-container {
+                padding: var(--spacing-lg);
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .summary-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .upcoming-events-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card h2 {
+                font-size: 1rem;
+            }
+
+            .card p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .dashboard-container {
+                padding: var(--spacing-xl);
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .upcoming-events-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .new-event-button {
+                min-width: 240px;
+            }
+        }

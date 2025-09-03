@@ -1,0 +1,261 @@
+/* src/styles/consultor-event-list.css */
+
+/* Importar variables de colores */
+@import './variables.css';
+
+.consultor-event-list-container {
+    padding: var(--spacing-md);
+    background-color: var(--background);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md); /* Espacio entre secciones */
+    box-sizing: border-box;
+}
+
+.consultor-event-list-container h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 2px solid var(--primary); /* Separador */
+    padding-bottom: var(--spacing-sm);
+}
+
+.event-filters {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los filtros se envuelvan */
+    gap: var(--spacing-sm); /* Espacio entre campos de filtro */
+    align-items: center;
+    padding: var(--spacing-sm);
+    background-color: var(--light-background);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.event-filters input[type="text"],
+.event-filters input[type="date"],
+.event-filters input[type="time"],
+.event-filters select { /* <-- Añadir select aquí */
+    flex-grow: 1; /* Permite que los inputs crezcan */
+    padding: var(--spacing-xs);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    min-width: 150px; /* Ancho mínimo para inputs */
+    background-color: white; /* Fondo blanco */
+    color: var(--textPrimary); /* Texto oscuro */
+    cursor: pointer; /* Indicar que es seleccionable */
+}
+
+.clear-filters-button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Evita que el botón se encoja */
+}
+
+.clear-filters-button:hover {
+    background-color: darken(var(--primary), 10%);
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs); /* Espacio entre elementos de la lista */
+}
+
+.event-list-item {
+    background-color: var(--light-background);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 3px; /* Espacio entre líneas de info del evento */
+    border-left: 5px solid var(--complement); /* Borde de color por defecto */
+}
+
+.event-list-item:hover {
+    background-color: darken(var(--light-background), 3%);
+    transform: translateY(-2px);
+}
+
+.event-list-item .event-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.event-list-item .event-date-time,
+.event-list-item .event-details-summary {
+    font-size: 0.9rem;
+    color: var(--textSecondary);
+     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- Estilos para el Estado de la Evidencia en la Lista --- */
+.event-list-item .event-evidence-status {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 4px;
+    align-self: flex-start; /* Alinear a la izquierda */
+    margin-top: 5px; /* Espacio arriba */
+}
+
+.event-list-item .event-evidence-status.status-pendiente {
+    background-color: #fff3e0; /* Naranja claro */
+    color: #f57c00; /* Naranja oscuro */
+    border: 1px solid #f57c00;
+}
+
+.event-list-item.evidence-pendiente {
+    border-left-color: #f57c00; /* Borde naranja para el item */
+}
+
+.event-list-item .event-evidence-status.status-aceptada {
+    background-color: #e8f5e9; /* Verde claro */
+    color: #4caf50; /* Verde oscuro */
+    border: 1px solid #4caf50;
+}
+
+.event-list-item.evidence-aceptada {
+    border-left-color: #4caf50; /* Borde verde para el item */
+}
+
+.event-list-item .event-evidence-status.status-devuelta {
+    background-color: #ffebee; /* Rojo claro */
+    color: #d32f2f; /* Rojo oscuro */
+    border: 1px solid #d32f2f;
+}
+
+.event-list-item.evidence-devuelta {
+    border-left-color: #d32f2f; /* Borde rojo para el item */
+}
+
+/* Estilo para eventos sin estado de evidencia definido (No Subida) */
+.event-list-item.evidence-not-uploaded {
+     border-left-color: #757575; /* Borde gris */
+}
+.event-list-item .event-evidence-status.status-not-uploaded {
+     background-color: #f5f5f5;
+     color: #757575;
+     border: 1px solid #bdbdbd;
+}
+/* Estilo para evidencia subida pero sin estado explícito (ej. Pendiente de revisión inicial) */
+.event-list-item.evidence-uploaded {
+     border-left-color: #1976d2; /* Borde azul */
+}
+.event-list-item .event-evidence-status.status-uploaded {
+     background-color: #e3f2fd;
+     color: #1976d2;
+     border: 1px solid #1976d2;
+}
+
+
+/* --- Estilos para el Estado de la Actividad (Opcional mostrar en la lista) --- */
+/* Puedes añadir estilos aquí si decides mostrar el estado de actividad en la lista */
+/* .event-list-item .event-activity-status { ... } */
+
+
+.no-events {
+    text-align: center;
+    color: var(--textSecondary);
+    font-size: 1rem;
+    padding: var(--spacing-md);
+}
+
+
+/* ==== Responsividad de la Página de Lista de Eventos ==== */
+
+@media (max-width: 767px) {
+    .consultor-event-list-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    .consultor-event-list-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-md);
+    }
+    .event-filters {
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs);
+    }
+    .event-filters input[type="text"],
+    .event-filters input[type="date"],
+    .event-filters input[type="time"],
+    .event-filters select, /* <-- Añadir select aquí */
+    .clear-filters-button {
+         min-width: unset; /* Eliminar ancho mínimo en móvil */
+         flex-basis: 100%; /* Cada filtro en su propia línea */
+    }
+
+    .event-list-item {
+        padding: var(--spacing-sm);
+        gap: 2px;
+    }
+    .event-list-item .event-title {
+        font-size: 1rem;
+    }
+     .event-list-item .event-date-time,
+     .event-list-item .event-details-summary {
+         font-size: 0.85rem;
+     }
+     .event-list-item .event-evidence-status {
+         font-size: 0.75rem;
+         padding: 1px 4px;
+     }
+}
+
+@media (max-width: 480px) {
+    .consultor-event-list-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+     .consultor-event-list-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-sm);
+    }
+     .event-filters {
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs);
+    }
+     .event-list-item {
+        padding: var(--spacing-xs);
+        gap: 2px;
+    }
+     .event-list-item .event-title {
+        font-size: 0.95rem;
+    }
+     .event-list-item .event-date-time,
+     .event-list-item .event-details-summary {
+         font-size: 0.8rem;
+     }
+      .event-list-item .event-evidence-status {
+         font-size: 0.7rem;
+         padding: 1px 3px;
+     }
+}
+    

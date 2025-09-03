@@ -1,0 +1,115 @@
+/* src/styles/consultor-layout.css */
+
+/* Importar variables de colores (ruta según tu estructura) */
+@import './variables.css';
+
+.consultor-layout-container {
+    display: flex; /* Usar flexbox para el layout principal */
+    min-height: 100vh; /* Ocupar al menos toda la altura de la ventana */
+    /* Añadir overflow-x hidden aquí para prevenir scroll horizontal cuando el contenido se desplaza */
+    overflow-x: hidden;
+}
+
+.consultor-content-area {
+    flex-grow: 1; /* Permitir que el área de contenido ocupe el espacio restante */
+    margin-left: 250px; /* Dejar espacio para el sidebar en escritorio (igual que el ancho del sidebar) */
+    padding: var(--spacing-md); /* Padding interno */
+    background-color: var(--light-background); /* Fondo del área de contenido */
+    transition: margin-left 0.3s ease, padding-top 0.3s ease, transform 0.3s ease, width 0.3s ease; /* Añadir width a la transición */
+    box-sizing: border-box; /* Incluir padding en el tamaño */
+    width: 100%; /* Asegurar que ocupe el 100% del ancho disponible por defecto */
+    position: relative; /* Necesario para posicionar el botón burger */
+}
+
+/* Estilos para el botón "Burger" (solo visible en móvil) */
+.burger-button {
+    display: none; /* Oculto por defecto en escritorio */
+    position: fixed; /* Fijo en la pantalla */
+    top: var(--spacing-sm); /* Ajusta la posición vertical */
+    left: var(--spacing-sm); /* Ajusta la posición horizontal */
+    background-color: var(--secondary); /* Fondo del botón */
+    color: white;
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm); /* Padding */
+    font-size: 1.5rem; /* Tamaño del icono */
+    cursor: pointer;
+    z-index: 1001; /* Por encima del sidebar cuando está cerrado */
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease; /* Transición para mover el botón */
+}
+
+
+/* ==== Responsividad del Layout y Burger Menu ==== */
+
+/* Media query para pantallas pequeñas (móviles y tablets pequeñas) */
+@media (max-width: 768px) {
+    .consultor-content-area {
+        margin-left: 0; /* Eliminar margen izquierdo en pantallas pequeñas */
+        /* Añadir padding superior para dejar espacio al botón burger fijo */
+        /* Ajusta el valor (ej: 60px) según la altura y padding de tu botón burger */
+        padding-top: calc(var(--spacing-md) + 60px);
+        /* Cuando el sidebar está abierto, desplazar el contenido principal */
+        /* El valor de translateX debe ser igual al ancho del sidebar (250px) */
+        transform: translateX(0); /* Posición normal por defecto */
+        width: 100%; /* Ocupa el 100% del ancho por defecto */
+    }
+
+    /* Clase añadida al main cuando el sidebar está abierto */
+    .consultor-content-area.sidebar-open {
+        transform: translateX(250px); /* Desplazar el contenido hacia la derecha */
+        /* Reducir el ancho del área de contenido visible */
+        width: calc(100% - 250px); /* <-- Ajuste clave: el ancho ahora es el total menos el ancho del sidebar */
+        /* overflow-x: hidden; /* Ya lo añadimos al contenedor principal */
+    }
+
+
+    /* Mostrar el botón burger en pantallas pequeñas */
+    .burger-button {
+        display: block;
+    }
+
+    /* Ajustar la posición del botón burger cuando el sidebar está abierto */
+    .burger-button.sidebar-open {
+         /* Mover el botón a la derecha del sidebar abierto */
+         /* Ajusta el valor (ej: 260px) según el ancho del sidebar + un pequeño margen */
+        left: calc(250px + var(--spacing-sm));
+    }
+
+     /* Oscurecer el contenido principal cuando el sidebar está abierto en móvil */
+     .consultor-content-area.sidebar-open::before {
+         content: '';
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+         z-index: 999; /* Por encima del contenido, pero debajo del sidebar y burger */
+         pointer-events: auto; /* Permitir clics para cerrar el sidebar */
+     }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .consultor-content-area {
+        padding: var(--spacing-sm); /* Reducir padding */
+         /* Ajustar padding superior si el botón burger cambia de tamaño */
+         padding-top: calc(var(--spacing-sm) + 50px); /* Ejemplo, ajusta según sea necesario */
+    }
+     .burger-button {
+         font-size: 1.3rem; /* Reducir tamaño del icono burger */
+         padding: var(--spacing-xs); /* Ajustar padding del botón */
+         top: var(--spacing-sm);
+         left: var(--spacing-sm);
+     }
+      .burger-button.sidebar-open {
+         left: calc(250px + var(--spacing-xs)); /* Ajustar posición si el sidebar es de 250px */
+     }
+
+     /* Ajustar el desplazamiento y ancho del contenido en pantallas muy pequeñas si el sidebar es de 250px */
+     .consultor-content-area.sidebar-open {
+         transform: translateX(250px);
+         width: calc(100% - 250px);
+     }
+}

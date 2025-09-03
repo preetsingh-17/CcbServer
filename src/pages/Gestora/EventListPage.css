@@ -1,0 +1,424 @@
+/* Definición de variables CSS para los colores */
+:root {
+    --primary: #e4022c; /* Rojo */
+    --secondary: #273474; /* Azul oscuro */
+    --complement: #394a9e; /* Azul un poco más claro */
+    --textPrimary: #333;
+    --textSecondary: #555;
+    --border: #eee;
+    --background: #fff;
+    --light-background: #f8f9fa; /* Fondo ligeramente gris, similar al anterior */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Color de sombra */
+    --card-background: #ffffff; /* Fondo para las tarjetas de evento */
+    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ajustada */
+    --input-border: #ddd; /* Borde de input */
+    --input-focus-border: var(--complement);
+
+    /* Colores para estados de evento (ejemplo) */
+    --status-programado: #007bff; /* Azul para Programado */
+    --status-completado: #28a745; /* Verde para Completado */
+    --status-cancelado: #dc3545; /* Rojo para Cancelado */
+}
+
+/* Estilos generales para el contenedor de la lista de eventos */
+.event-list-container {
+    padding: 0.75rem;
+    background-color: var(--light-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    margin: 0.75rem;
+    width: calc(100% - 1.5rem);
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif; /* Fuente consistente con el dashboard */
+}
+
+/* Estilos para el encabezado de la lista */
+.list-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list-header h2 {
+    margin: 0;
+    color: var(--textPrimary);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Estilos para las estadísticas */
+.stats-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.stat-item {
+    background-color: var(--complement);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Estilos para la sección de acciones en el encabezado */
+.header-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+/* Estilos para los botones de acción */
+.btn-add-programacion,
+.btn-go-to-dashboard,
+.btn-reload {
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    width: 100%;
+}
+
+.btn-add-programacion {
+    background-color: var(--complement);
+    color: var(--background);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-add-programacion:hover {
+    background-color: var(--secondary);
+}
+
+.btn-go-to-dashboard {
+    background-color: transparent;
+    color: var(--textPrimary);
+    border-color: var(--border);
+}
+
+.btn-go-to-dashboard:hover {
+    background-color: var(--light-background);
+}
+
+.btn-reload {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.btn-reload:hover {
+    background-color: #218838;
+}
+
+.btn-reload:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Estilos para la sección de filtros mejorada */
+.filter-section {
+    background-color: var(--card-background);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.filter-header h3 {
+    margin: 0;
+    color: var(--textPrimary);
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.clear-filters-btn {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+/* Estilos para los inputs de filtro */
+.filter-input,
+.filter-select {
+    padding: 0.75rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--textPrimary);
+    background-color: var(--background);
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    border-color: var(--complement);
+    box-shadow: 0 0 0 2px rgba(57, 74, 158, 0.1);
+    outline: none;
+}
+
+/* Estilos específicos para el select de filtro */
+.filter-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2rem;
+}
+
+/* Estilos para la lista de elementos de evento */
+.event-items-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+/* Estilos para estados de carga */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top: 4px solid var(--complement);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-state p {
+    color: var(--textSecondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Estilos para mensajes */
+.no-events-message,
+.error-message {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+
+.no-events-message {
+    background-color: var(--light-background);
+    color: var(--textSecondary);
+    border: 2px dashed var(--border);
+}
+
+.no-events-message p {
+    margin-bottom: 1rem;
+}
+
+.no-events-message button {
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    background-color: #fff2f2;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.error-message p {
+    margin-bottom: 1rem;
+}
+
+.error-message button {
+    margin-top: 0.5rem;
+}
+
+/* Estilos para información de resultados */
+.results-info {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--card-background);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.results-info p {
+    margin: 0;
+    color: var(--textSecondary);
+    font-size: 0.85rem;
+}
+
+/* Media queries para responsividad */
+@media (min-width: 480px) {
+    .event-list-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .header-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .event-list-container {
+        padding: 1.5rem;
+        margin: 1.5rem auto;
+        max-width: 1200px;
+    }
+
+    .list-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+    }
+
+    .header-title {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .list-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .stats-summary {
+        margin-top: 0;
+    }
+
+    .header-actions {
+        width: auto;
+        grid-template-columns: auto auto auto;
+    }
+
+    .btn-add-programacion,
+    .btn-go-to-dashboard,
+    .btn-reload {
+        padding: 0.75rem 1.25rem;
+        width: auto;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .event-items-list {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .event-list-container {
+        padding: 2rem;
+    }
+
+    .list-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .event-items-list {
+        gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .filter-grid {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+/* Animaciones */
+.event-items-list {
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+    Nota: Los estilos para cada '.event-item' individual
+    deben estar definidos en EventItem.css para mantener
+    la modularidad. Asegúrate de que EventItem.css
+    tenga estilos que complementen este diseño premium,
+    como padding, bordes, sombras y un layout interno limpio,
+    utilizando también si es posible las variables de color.
+*/

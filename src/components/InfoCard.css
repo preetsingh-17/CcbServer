@@ -1,0 +1,29 @@
+/* src/components/InfoCard.css */
+.info-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    min-width: 180px; /* Ancho mínimo para la tarjeta */
+  }
+  
+  .info-card-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .info-card-value {
+    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: bold;
+    /* El color se aplica desde el componente JS */
+  }
+  
+  .info-card-description {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+  }

@@ -1,0 +1,428 @@
+/* src/pages/Gestora/ConsultorFormPage.css */
+
+/* Variables CSS */
+:root {
+    --primary-color: #273474;
+    --secondary-color: #394a9e;
+    --accent-color: #e4022c;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --border-color: #e0e0e0;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    /* Espaciados */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    /* Espaciados móviles */
+    --mobile-spacing-xs: 0.5rem;
+    --mobile-spacing-sm: 0.75rem;
+    --mobile-spacing-md: 1rem;
+    --mobile-spacing-lg: 1.25rem;
+}
+
+/* Contenedor principal */
+.consultor-form {
+    max-width: 1200px;
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-lg);
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+}
+
+/* Secciones del formulario */
+.form-section {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.form-section h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+/* Grid para campos del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Grupos de formulario */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-group label svg {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(57, 74, 158, 0.1);
+}
+
+/* Sección de verificación de disponibilidad */
+.availability-check-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.availability-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.availability-inputs .form-group {
+    margin-bottom: 0;
+}
+
+.availability-inputs input {
+    height: 28px;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+.check-availability-button {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #273474;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+    height: 28px;
+}
+
+.check-availability-button:hover {
+    background-color: #edf2ff;
+    border-color: #273474;
+}
+
+/* Mensajes de disponibilidad */
+.availability-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.availability-message.available {
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.availability-message.not-available {
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+}
+
+/* Tabla de eventos asignados */
+.assigned-events-list-container {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    margin-top: var(--spacing-md);
+}
+
+.assigned-events-list-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing-md);
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.assigned-event-list-item {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.assigned-event-list-item:hover {
+    background-color: var(--background-color);
+}
+
+.event-cell {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Botones de acción */
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--border-color);
+}
+
+.form-actions button {
+    padding: 0.75rem var(--spacing-lg);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.save-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.delete-consultor-button {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.cancel-button {
+    background-color: var(--text-secondary);
+    color: white;
+}
+
+.form-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+    .consultor-form {
+        margin: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .availability-inputs {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .consultor-form {
+        margin: var(--spacing-sm);
+        padding: var(--spacing-sm);
+        border-radius: 8px;
+    }
+
+    .form-section {
+        padding: var(--spacing-md);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .availability-inputs {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .assigned-events-list-header {
+        display: none;
+    }
+
+    .assigned-event-list-item {
+        display: flex;
+        flex-direction: column;
+        padding: var(--spacing-md);
+        gap: var(--spacing-sm);
+    }
+
+    .event-cell {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: var(--spacing-xs) 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .event-cell::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .form-actions button {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .check-availability-button {
+        width: 100%;
+    }
+
+    .edit-assigned-event-button,
+    .delete-assigned-event-button {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Mejoras táctiles para móvil */
+@media (hover: none) {
+    .form-section:hover {
+        transform: none;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .form-group input,
+    .check-availability-button,
+    .form-actions button {
+        min-height: 44px; /* Altura mínima para elementos táctiles */
+    }
+
+    .form-actions button:active,
+    .check-availability-button:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Estado de carga */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Botones de acciones para eventos asignados */
+.edit-assigned-event-button,
+.delete-assigned-event-button {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 80px;
+    color: #495057;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+.edit-assigned-event-button {
+    color: #273474;
+}
+
+.edit-assigned-event-button:hover {
+    background-color: #edf2ff;
+    border-color: #273474;
+}
+
+.delete-assigned-event-button {
+    color: #666;
+}
+
+.delete-assigned-event-button:hover {
+    background-color: #fff5f5;
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.edit-assigned-event-button svg,
+.delete-assigned-event-button svg {
+    font-size: 0.7rem;
+}

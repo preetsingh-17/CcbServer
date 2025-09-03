@@ -1,0 +1,253 @@
+/* src/styles/consultor-dashboard.css */
+
+/* Importar variables de colores (ruta según tu estructura) */
+@import '../../styles/variables.css';
+
+.consultor-dashboard-container {
+    /* Este padding y margin ya están definidos en consultor-layout.css para el .consultor-content-area */
+    /* Puedes añadir estilos específicos para el contenido DENTRO del área de contenido aquí */
+    padding: var(--spacing-md); /* Padding interno */
+    background-color: var(--background); /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: var(--spacing-md); /* Espacio debajo del contenedor */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md); /* Espacio entre elementos internos */
+    box-sizing: border-box;
+}
+
+/* Panel de Notificaciones */
+.notifications-panel {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.notifications-panel h3 {
+    margin: 0 0 15px 0;
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.notification-item.unread {
+    background-color: #e3f2fd;
+    border-left-color: #2196f3;
+}
+
+.notification-title {
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 5px;
+}
+
+.notification-message {
+    color: var(--textPrimary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.notification-timestamp {
+    color: var(--textSecondary);
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.consultor-dashboard-container h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md); /* Espacio debajo del título */
+    color: var(--secondary);
+    font-size: 1.8rem; /* Tamaño de título */
+    font-weight: 700;
+    text-align: center;
+}
+
+.loading-message,
+.error-message {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--textSecondary);
+    padding: var(--spacing-sm);
+    background-color: var(--light-background);
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.error-message {
+    color: var(--primary);
+    font-weight: bold;
+    background-color: #ffebee; /* Fondo rojo claro */
+    border: 1px solid var(--primary);
+}
+
+.event-detail-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    
+    /* Lógica de visibilidad y animación */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+}
+
+/* 2. Clase '.visible' que se añade para MOSTRAR el modal */
+.event-detail-modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. El Contenido del Modal (la caja blanca) */
+.event-detail-modal-content {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    /* Animación de entrada: el modal aparece con un ligero "zoom in" */
+    transform: scale(0.95);
+    transition: transform 0.25s ease-in-out;
+}
+
+/* 4. Cuando el modal es visible, el contenido crece a su tamaño normal */
+.event-detail-modal-overlay.visible .event-detail-modal-content {
+    transform: scale(1);
+}
+
+.event-detail-modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #004481; /* Un color primario de ejemplo */
+    font-size: 1.6rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.event-detail-modal-content h4 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #005a9e;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+
+.event-detail-modal-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.event-detail-modal-content strong {
+    font-weight: 600;
+    color: #111;
+}
+
+.close-modal-button {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 30px;
+    border: none;
+    background-color: #6c757d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.close-modal-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* ==== Responsividad de la página y modal ==== */
+
+@media (max-width: 767px) {
+    .consultor-dashboard-container {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-md);
+    }
+    .consultor-dashboard-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: var(--spacing-md);
+    }
+    .loading-message,
+    .error-message {
+        font-size: 1em;
+        padding: var(--spacing-sm);
+    }
+     .event-detail-modal-content {
+         padding: var(--spacing-sm);
+         max-width: 95%; /* Un poco más ancho en móviles */
+     }
+      .event-detail-modal-content h3 {
+         font-size: 1.2rem;
+      }
+       .event-detail-modal-content h4 {
+         font-size: 1.1rem;
+       }
+      .event-detail-modal-content p {
+         font-size: 0.9rem;
+         margin: 0.4rem 0;
+      }
+       .close-modal-button {
+         font-size: 1.3rem;
+         top: var(--spacing-xs);
+         right: var(--spacing-xs);
+       }
+}
+
+@media (max-width: 480px) {
+    .consultor-dashboard-container {
+        padding: var(--spacing-sm); /* Mantener padding */
+        gap: var(--spacing-md);
+    }
+    .consultor-dashboard-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: var(--spacing-sm);
+    }
+     .event-detail-modal-content {
+         padding: var(--spacing-sm);
+     }
+      .event-detail-modal-content h3 {
+         font-size: 1.1rem;
+      }
+       .event-detail-modal-content h4 {
+         font-size: 1rem;
+       }
+      .event-detail-modal-content p {
+         font-size: 0.85rem;
+      }
+       .close-modal-button {
+         font-size: 1.2rem;
+       }
+}

@@ -1,0 +1,186 @@
+/* src/styles/consultor-sidebar.css */
+
+/* Importar variables de colores (ruta según tu estructura) */
+@import './variables.css';
+
+.consultor-sidebar {
+    width: 250px; /* Ancho por defecto en escritorio */
+    background-color: var(--secondary); /* Fondo azul oscuro */
+    color: white; /* Texto blanco */
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Scroll si el contenido es largo */
+    transition: transform 0.3s ease; /* Transición para el efecto de deslizar */
+    z-index: 1000; /* Por encima de otros elementos */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    display: flex; /* Usar flexbox para layout interno */
+    flex-direction: column; /* Apilar header, nav, footer */
+}
+
+.consultor-sidebar-header {
+    padding: var(--spacing-md);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex; /* Para alinear título y botón de cerrar */
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0; /* Evitar que se encoja */
+}
+
+.consultor-sidebar-header h3 {
+    margin: 0;
+    font-size: 1.3rem; /* Tamaño de título */
+    font-weight: 600;
+    flex-grow: 1; /* Permitir que el título ocupe espacio */
+    text-align: left; /* Alinear título a la izquierda */
+}
+
+/* Botón para cerrar el sidebar (solo visible en móvil) */
+.close-sidebar-button {
+    display: none; /* Oculto por defecto en escritorio */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem; /* Tamaño grande para ser fácil de tocar */
+    cursor: pointer;
+    padding: 0;
+    margin-left: var(--spacing-sm); /* Espacio a la izquierda del título */
+}
+
+
+.consultor-sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Permitir que la navegación principal ocupe espacio */
+    padding-top: var(--spacing-sm); /* Espacio superior */
+}
+
+.consultor-sidebar-nav li {
+    margin: 0;
+}
+
+.consultor-sidebar-nav a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md); /* Padding */
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8); /* Color de texto por defecto */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-left: 4px solid transparent; /* Borde izquierdo para indicador activo */
+}
+
+/* Estilos para el enlace activo */
+.consultor-sidebar-nav a.active {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    color: white; /* Texto blanco */
+    border-left-color: var(--primary); /* Borde rojo activo */
+}
+
+/* Estilos al pasar el mouse */
+.consultor-sidebar-nav a:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.08); /* Fondo más sutil */
+    color: white;
+}
+
+/* Estilos para el botón de cerrar sesión */
+.sidebar-logout-button {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador */
+    margin-top: var(--spacing-sm); /* Espacio superior */
+}
+
+.sidebar-logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+
+.consultor-sidebar-footer {
+    padding: var(--spacing-md);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.1); */ /* Eliminado si el botón de logout tiene borde superior */
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    flex-shrink: 0; /* Evitar que se encoja */
+}
+
+/* --- La sección de lista de eventos y filtros YA NO VA AQUÍ --- */
+
+
+/* ==== Responsividad del Sidebar (Burger Menu) ==== */
+
+/* Media query para pantallas pequeñas (móviles y tablets pequeñas) */
+@media (max-width: 768px) {
+    .consultor-sidebar {
+        width: 250px; /* Mismo ancho que en escritorio cuando está abierto */
+        transform: translateX(-250px); /* Oculto por defecto (deslizado fuera de la pantalla) */
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada cuando abierto */
+    }
+
+    /* Estado abierto del sidebar */
+    .consultor-sidebar.open {
+        transform: translateX(0); /* Visible (deslizado a la posición original) */
+    }
+
+    .consultor-sidebar-header h3 {
+         text-align: center; /* Centrar título en móvil */
+         flex-grow: 0; /* No forzar crecimiento */
+    }
+
+    /* Mostrar el botón de cerrar en pantallas pequeñas */
+    .close-sidebar-button {
+        display: block;
+    }
+
+    .consultor-sidebar-nav a {
+        padding: var(--spacing-sm) var(--spacing-md); /* Mantener padding */
+        text-align: left; /* Mantener alineación a la izquierda */
+        border-left: 4px solid transparent; /* Mantener borde izquierdo */
+        border-bottom: none; /* Eliminar borde inferior */
+    }
+
+    .consultor-sidebar-nav a.active {
+        border-left-color: var(--primary); /* Mantener borde izquierdo activo */
+        border-bottom-color: transparent; /* Eliminar borde inferior activo */
+    }
+
+     .consultor-sidebar-footer {
+        display: block; /* Mostrar footer en este tamaño si lo deseas, o display: none si no */
+     }
+
+     .sidebar-logout-button {
+         display: block; /* Mostrar botón de logout */
+         text-align: left; /* Alinear a la izquierda */
+         padding: var(--spacing-sm) var(--spacing-md); /* Mantener padding */
+         border-top: 1px solid rgba(255, 255, 255, 0.1); /* Mantener separador */
+         margin-top: var(--spacing-sm);
+     }
+}
+
+/* En pantallas muy pequeñas, si el sidebar es relativo, ajustamos */
+/* Aunque con position: fixed y transform, esta media query podría no ser necesaria para el sidebar mismo */
+/* Pero la mantengo por si acaso o para otros elementos */
+/*
+@media (max-width: 480px) {
+   .consultor-sidebar {
+       width: 100%;
+       transform: translateX(-100%);
+   }
+   .consultor-sidebar.open {
+       transform: translateX(0);
+   }
+}
+*/

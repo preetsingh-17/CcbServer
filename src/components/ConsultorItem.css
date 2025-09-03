@@ -1,0 +1,156 @@
+/* src/components/ConsultorItem.css */
+
+/* Estilos para el contenedor de cada elemento de la lista de consultores */
+.consultor-item {
+    display: grid; /* Usa CSS Grid para crear un diseño de columnas */
+    /* Define el ancho de las columnas. ¡IMPORTANTE! Estos valores deben coincidir con los del encabezado de la lista en GestoraConsultores.css */
+    grid-template-columns: 2fr 1.5fr 2fr 1fr 1.5fr; /* Ajusta estos valores según necesites para que coincidan con el header */
+    gap: 10px; /* Espacio entre las columnas */
+    align-items: center; /* Centra verticalmente el contenido en cada celda */
+    padding: 15px 5px; /* Espaciado interno (vertical y horizontal) */
+    border-bottom: 1px solid #eee; /* Línea separadora inferior */
+    color: #555; /* Color por defecto del texto */
+    background-color: #fff; /* Fondo blanco para cada fila */
+}
+
+/* Estilos para cada celda individual dentro de un elemento de consultor */
+.item-cell {
+    padding: 0 5px; /* Espaciado horizontal */
+    overflow: hidden; /* Oculta contenido que se desborda */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es muy largo */
+    /* white-space: nowrap; */ /* Desactivado para permitir que el contacto se divida en dos líneas */
+}
+
+/* Estilos específicos para la columna de Nombre (incluye avatar) */
+.item-cell.name-col {
+    display: flex; /* Usa Flexbox para alinear el avatar y el nombre */
+    align-items: center; /* Centra verticalmente el avatar y el nombre */
+    gap: 10px; /* Espacio entre el avatar y el nombre */
+}
+
+/* Estilos para el contenedor del avatar/iniciales */
+.consultor-avatar {
+    width: 40px; /* Ancho del avatar */
+    height: 40px; /* Alto del avatar */
+    border-radius: 50%; /* Hace que el contenedor sea redondo */
+    display: flex; /* Usa Flexbox para centrar las iniciales */
+    justify-content: center; /* Centra horizontalmente las iniciales */
+    align-items: center; /* Centra verticalmente las iniciales */
+    font-size: 0.9em; /* Tamaño de fuente para las iniciales */
+    font-weight: bold; /* Texto en negrita */
+    background-color: #007bff; /* Color de fondo azul para el avatar (usa tu color primario si es diferente) */
+    color: white; /* Color del texto blanco */
+    flex-shrink: 0; /* Evita que el avatar se encoja */
+}
+
+/* Estilos para la columna de Eventos (el badge verde) */
+.item-cell.events-col {
+    /* Alineación específica si es necesario */
+    text-align: center; /* Centra el badge */
+}
+
+/* Estilos para el badge de eventos */
+.event-count-badge {
+    background-color: #e0f7fa; /* Fondo verde claro (ajusta el color si es necesario) */
+    color: #00796b; /* Color del texto verde oscuro */
+    padding: 3px 8px; /* Espaciado interno */
+    border-radius: 12px; /* Bordes redondeados para el badge */
+    font-size: 0.8em; /* Tamaño de fuente más pequeño */
+    font-weight: bold; /* Texto en negrita */
+}
+
+
+/* Estilos para la columna de Acciones (botones) */
+.item-cell.actions-col {
+     display: flex; /* Usa Flexbox para alinear los botones */
+     gap: 5px; /* Espacio entre los botones */
+     justify-content: center; /* Centra los botones horizontalmente */
+     flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+}
+
+/* Estilos generales para los botones de acción (Editar, Eliminar) */
+.action-button {
+    padding: 5px 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+    cursor: pointer; /* Muestra cursor de mano */
+    font-size: 0.85em; /* Tamaño de fuente */
+    transition: background-color 0.2s ease; /* Transición suave */
+    flex-shrink: 0; /* Evita que los botones se encojan */
+}
+
+/* Estilos específicos para el botón de Editar */
+.edit-button {
+    background-color: #ffecb3; /* Fondo amarillo claro (ajusta el color si es necesario) */
+    color: #ff6f00; /* Color del texto naranja oscuro */
+}
+
+/* Efecto hover para el botón de Editar */
+.edit-button:hover {
+    background-color: #ffe082; /* Fondo amarillo un poco más oscuro */
+}
+
+/* Estilos específicos para el botón de Eliminar */
+.delete-button {
+    background-color: #ffcdd2; /* Fondo rojo claro (ajusta el color si es necesario) */
+    color: #d32f2f; /* Color del texto rojo oscuro */
+}
+
+/* Efecto hover para el botón de Eliminar */
+.delete-button:hover {
+    background-color: #ef9a9a; /* Fondo rojo un poco más oscuro */
+}
+
+
+/* Media queries para hacer el diseño responsivo */
+
+/* Estilos para pantallas con un ancho máximo de 768px (tablets y móviles) */
+@media (max-width: 768px) {
+    .consultor-item {
+        /* Ajusta las columnas para pantallas más pequeñas */
+        grid-template-columns: 1.5fr 1fr 1.5fr 1fr 1fr; /* Puede que necesites ajustar estos valores */
+        gap: 5px; /* Reduce el espacio entre columnas */
+        font-size: 0.9em; /* Reduce el tamaño de fuente */
+        padding: 10px 3px; /* Ajusta el padding */
+    }
+
+    .item-cell {
+        padding: 0 3px; /* Ajusta el padding horizontal */
+    }
+
+    .consultor-avatar {
+        width: 35px; /* Reduce el tamaño del avatar */
+        height: 35px;
+        font-size: 0.8em; /* Reduce el tamaño de fuente de las iniciales */
+    }
+
+     .action-button {
+         padding: 4px 8px; /* Reduce el padding de los botones */
+         font-size: 0.8em; /* Reduce el tamaño de fuente de los botones */
+     }
+}
+
+/* Estilos para pantallas muy pequeñas (ancho máximo de 480px, móviles pequeños) */
+@media (max-width: 480px) {
+    .consultor-item {
+        /* Simplifica aún más las columnas */
+        grid-template-columns: 1fr 1fr 1fr; /* Ejemplo: Nombre, Contacto, Acciones */
+        /* Oculta algunas columnas para ahorrar espacio */
+    }
+    /* Oculta las columnas de Especialidad y Eventos en pantallas muy pequeñas */
+    .item-cell.specialty-col,
+    .item-cell.events-col {
+        display: none;
+    }
+
+     .consultor-avatar {
+        width: 30px; /* Reduce el tamaño del avatar */
+        height: 30px;
+        font-size: 0.7em; /* Reduce el tamaño de fuente de las iniciales */
+    }
+
+     .action-button {
+         padding: 3px 6px; /* Reduce el padding de los botones */
+         font-size: 0.75em; /* Reduce el tamaño de fuente de los botones */
+     }
+}

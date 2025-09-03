@@ -1,0 +1,243 @@
+/* src/styles/ConsultorEventList.css */
+
+.consultor-event-list-container {
+    padding: 2rem;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+/* --- SECCIÓN CORREGIDA DE FILTROS --- */
+
+.filters-card {
+    background-color: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.filters-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    color: #34495e;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 1rem;
+}
+
+/* Usamos Flexbox para el contenedor principal de los filtros */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+    gap: 1.5rem;     /* Espacio entre los filtros */
+    align-items: center;
+}
+
+/* Cada grupo de filtro crecerá y se encogerá según sea necesario, con un tamaño base */
+.filter-group {
+    flex: 1 1 200px; /* flex-grow: 1, flex-shrink: 1, flex-basis: 200px */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* El campo de búsqueda puede ocupar más espacio */
+.filter-group.search-bar {
+    flex-basis: 300px;
+}
+
+
+.filter-group .filter-icon {
+    position: absolute;
+    left: 12px;
+    color: #95a5a6;
+    font-size: 0.9rem;
+    pointer-events: none; /* Para que no interfiera con el click en el input */
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.5rem; /* Espacio para el ícono */
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-sizing: border-box; /* Importante para que el padding no afecte el ancho total */
+}
+.filter-group select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2395a5a6%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.65em auto;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Evita que el botón se encoja */
+}
+
+.reset-button:hover {
+    background-color: #c0392b;
+}
+
+
+/* --- ESTILOS DE LA LISTA DE EVENTOS (SIN CAMBIOS) --- */
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.event-card {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1fr;
+    align-items: center;
+    gap: 1rem;
+    background-color: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-left: 5px solid #3498db;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.event-card-main .event-type-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: capitalize;
+}
+
+.event-type-badge.type-grupal {
+    background-color: #e9f5ff;
+    color: #3498db;
+}
+
+.event-type-badge.type-individual {
+    background-color: #e8f6f3;
+    color: #1abc9c;
+}
+
+
+.event-card-main .event-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.event-card-main .event-program {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+.event-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: #34495e;
+}
+
+.event-card-details .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.event-card-status {
+    text-align: right;
+}
+
+.status-badge {
+    padding: 0.4rem 1rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    min-width: 100px;
+    text-align: center;
+}
+
+.status-programado {
+    background-color: #e0f7fa;
+    color: #00796b;
+}
+
+.status-realizada {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+.status-pendiente {
+    background-color: #c6c93186;
+    color: #fffb00;
+}
+.status-cancelado {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.no-events-message {
+    text-align: center;
+    padding: 4rem;
+    background-color: #fff;
+    border-radius: 12px;
+    color: #7f8c8d;
+}
+.no-events-message p {
+    font-size: 1.2rem;
+    margin: 0;
+}

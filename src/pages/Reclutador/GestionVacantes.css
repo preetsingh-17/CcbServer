@@ -1,0 +1,360 @@
+.gestion-vacantes {
+   max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header-acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  text-align: center; /* centrado para móviles */
+  padding: 3%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.titulo-seccion {
+  flex: 1 1 auto;
+}
+.titulo-seccion h2 {
+  color: #273474;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+  
+.titulo-seccion p {
+  color: #394a9e;
+  margin: 0;
+}
+.btn-crear-vacante {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-crear-vacante:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.formulario-vacante {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(39, 52, 116, 0.1);
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.btn-publicar {
+  background: var(--success-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-publicar:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.filtros-section {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.filtro-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+.vacantes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.vacante-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vacante-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vacante-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.vacante-header h3 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.estado {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.estado.activa {
+  background: var(--success-color);
+  color: white;
+}
+
+.estado.en-revision {
+  background: var(--warning-color);
+  color: var(--text-primary);
+}
+
+.estado.cerrada {
+  background: var(--danger-color);
+  color: white;
+}
+
+.vacante-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.vacante-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.vacante-meta i {
+  color: var(--primary-color);
+}
+
+.vacante-descripcion {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.vacante-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.skill-tag {
+  background: var(--background-color);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+}
+
+.vacante-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.vacante-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.postulaciones,
+.fecha {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.vacante-acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-editar,
+.btn-ver-postulaciones {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.btn-editar {
+  background: var(--background-color);
+  color: var(--primary-color);
+}
+
+.btn-ver-postulaciones {
+  background: #273474;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-ver-postulaciones:hover {
+  background: #394a9e;
+  transform: translateY(-2px);
+}
+
+.btn-ver-postulaciones i {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .gestion-vacantes {
+    padding: 1rem;
+  }
+
+  .header-acciones {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vacante-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .vacante-footer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .vacante-stats {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vacante-acciones {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .btn-editar,
+  .btn-ver-postulaciones {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .header-acciones {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .titulo-seccion {
+    flex: unset;
+  }
+}
