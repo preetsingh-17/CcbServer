@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# CCB - Plataforma de Gestión (Frontend React + Backend Node/Express)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicación para la gestión integral de cronogramas, evidencias, pagos, vacantes y tableros (dashboards) para consultores y gestoras.
+
+Arquitectura:
+- Frontend: React (Create React App)
+- Backend: Node.js/Express con MySQL, autenticación JWT, CORS, subida de archivos (multer) y tareas programadas (node-cron). El backend sirve el build del frontend en producción.
+
+Requisitos mínimos:
+- Node 18+
+- MySQL 8+
+
+Despliegue recomendado:
+- Backend con PM2 (ver `backend/ecosystem.config.js`).
+- Variables de entorno en `backend/.env` (ver `backend/ENV.sample.md`).
 
 ## Available Scripts
 
